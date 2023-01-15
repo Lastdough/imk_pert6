@@ -5,32 +5,36 @@
   <meta charset="utf-8">
   <title>Laporan Akhir</title>
   <style>
-    
+    /* sets the font-family and font-size for the entire body of the webpage. */
     body {
       font-family: Montserrat;
       font-size: 16px;
     }
 
+    /* Elements with div-center will have a 0.5px solid border and 
+    will be centered on the page by setting the margin to "auto".
+    */
     .div-center {
       border: 0.5px solid;
       width: fit-content;
       margin: auto;
     }
 
+    /*sets text alignment of the elements to center.*/
     .text-center {
       text-align: center;
     }
 
+    /*sets a padding of 8px for elements.*/
     .p-8 {
       padding: 8px;
 
     }
 
-    table {
-      padding: 8px;
-
-    }
-
+    /*sets width 100%, 0.5px solid border, padding 14px, font-family, font-size, and cursor pointer.*/
+    /*The "display: block" property in CSS sets the element to be a block-level element. 
+    This means that the element will take up the full width of its parent container and 
+    create a new line after it.*/
     .button {
       display: block;
       width: 100%;
@@ -39,7 +43,14 @@
       font-family: Montserrat;
       font-size: 16px;
       cursor: pointer;
-      text-align: center;
+    }
+
+    /*defines styles for elements with class "button" when hovered over. 
+    The "filter: brightness(85%)" property reduces the brightness of the element by 15%. 
+    So when a user hovers over an element with the class "button", 
+    its brightness will be reduced by 15%.*/
+    .button:hover {
+      filter: brightness(85%);
     }
   </style>
 </head>
@@ -47,57 +58,68 @@
 <body>
   <div class="div-center">
     <form id="form" name="form" onsubmit="return validateForm()">
-      <table>
-        <tbody>
-          <tr>
-            <td>Nama (Max 10 Karakter)</td>
-            <td class="p-8">:</td>
-            <td>
-              <input size="23" type="text" name="nama" id="nama" />
-            </td>
-          </tr>
-          <tr>
-            <td>e-mail</td>
-            <td class="p-8">:</td>
-            <td>
-              <input size="23" type="text" name="email" id="email" />
-            </td>
-          </tr>
-          <tr>
-            <td>Pesan</td>
-            <td class="p-8">:</td>
-            <td>
-              <textarea name="pesan" id="pesan" rows="3" cols="24"></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>
-              <input type="submit" class="button" name="submit" id="submit" value="Submit" />
-            </td>
-          </tr>
-        </tbody>
+      <table class="p-8">
+        <tr>
+          <td>Nama (Max 10 Karakter)</td>
+          <td class="p-8">:</td>
+          <td>
+            <input size="23" type="text" name="nama" id="nama" />
+          </td>
+        </tr>
+        <tr>
+          <td>E-mail</td>
+          <td class="p-8">:</td>
+          <td>
+            <input size="23" type="text" name="email" id="email" />
+          </td>
+        </tr>
+        <tr>
+          <td>Pesan</td>
+          <td class="p-8">:</td>
+          <td>
+            <textarea name="pesan" id="pesan" rows="3" cols="24"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <input type="submit" class="button" />
+          </td>
+        </tr>
       </table>
     </form>
   </div>
 
   <script>
     function validateForm() {
+      //assigned variable nama and pesan to the values of the form fields named nama and pesan
       let nama = document.forms["form"]["nama"].value;
       let pesan = document.forms["form"]["pesan"].value;
+
+      /*checks if the value of "nama" is empty or a space, if so, 
+      it displays an alert message that prompts the user to enter a name 
+      and return false, which prevents the form from being submitted.*/
       if (nama == "" || nama == " ") {
         alert("Silahkan isi nama!");
         return false;
       }
+
+      /*If the length of "nama" is more than 10 characters, it displays an alert message 
+      that prompts the user to enter a name which is not more than 10 characters and return false.*/
       if (nama.length > 10) {
         alert("Nama tidak boleh melebihi 10 karakter!");
         return false;
       }
+
+      /*checks if the value of "pesan" is empty or a space, if so, 
+      it displays an alert message that prompts the user to enter a name 
+      and return false, which prevents the form from being submitted.*/
       if (pesan == "" || pesan == " ") {
         alert("Silahkan isi pesan!");
         return false;
       }
+      //If all the validation passed, it reset the form by calling "document.getElementById("form").reset();"
       document.getElementById("form").reset();
     }
   </script>
