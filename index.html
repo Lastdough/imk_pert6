@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Laporan Akhir</title>
+  <style>
+    
+    body {
+      font-family: Montserrat;
+      font-size: 16px;
+    }
+
+    .div-center {
+      border: 0.5px solid;
+      width: fit-content;
+      margin: auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .p-8 {
+      padding: 8px;
+
+    }
+
+    table {
+      padding: 8px;
+
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      border: 0.5px solid;
+      padding: 14px;
+      font-family: Montserrat;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="div-center">
+    <form id="form" name="form" onsubmit="return validateForm()">
+      <table>
+        <tbody>
+          <tr>
+            <td>Nama (Max 10 Karakter)</td>
+            <td class="p-8">:</td>
+            <td>
+              <input size="23" type="text" name="nama" id="nama" />
+            </td>
+          </tr>
+          <tr>
+            <td>e-mail</td>
+            <td class="p-8">:</td>
+            <td>
+              <input size="23" type="text" name="email" id="email" />
+            </td>
+          </tr>
+          <tr>
+            <td>Pesan</td>
+            <td class="p-8">:</td>
+            <td>
+              <textarea name="pesan" id="pesan" rows="3" cols="24"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="submit" class="button" name="submit" id="submit" value="Submit" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      let nama = document.forms["form"]["nama"].value;
+      let pesan = document.forms["form"]["pesan"].value;
+      if (nama == "" || nama == " ") {
+        alert("Silahkan isi nama!");
+        return false;
+      }
+      if (nama.length > 10) {
+        alert("Nama tidak boleh melebihi 10 karakter!");
+        return false;
+      }
+      if (pesan == "" || pesan == " ") {
+        alert("Silahkan isi pesan!");
+        return false;
+      }
+      document.getElementById("form").reset();
+    }
+  </script>
+</body>
+
+</html>
